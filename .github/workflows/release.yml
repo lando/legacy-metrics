@@ -17,7 +17,7 @@ jobs:
         node-version:
           - '14'
     steps:
-      # Install deps and cache
+      # Install deps and caches
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install node ${{ matrix.node-version }}
