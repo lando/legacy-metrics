@@ -2,9 +2,11 @@
 
 const _ = require('lodash');
 const debug = require('debug')('@lando/metrics');
-const fs = require('fs');
-const path = require('path');
 const Promise = require('bluebird');
+
+// Load plugins
+const BugsnagReporter = require('./../plugins/bugsnag.js');
+const ElasticsearchReporter = require('./../plugins/elastic.js');
 
 // Define default config
 const config = {
@@ -40,15 +42,13 @@ _.forEach(_.map(pluginConfig, plugin => plugin.config), key => {
 });
 debug('starting function with config %o', config);
 
-// Iterate through plugins and build list of reporters
-const plugins = _(config.LANDO_METRICS_PLUGINS)
-  .map(plugin => _.merge({}, plugin, {path: path.resolve(__dirname, `${plugin.name}.js`)}))
-  .filter(plugin => fs.existsSync(plugin.path))
-  .map(plugin => _.merge({}, plugin, {Reporter: require(plugin.path)}))
-  .value();
+// Manually declare plugins
+const plugins = [
+  {name: 'elastic', Reporter: ElasticsearchReporter, config: 'LANDO_METRICS_ELASTIC'},
+  {name: 'bugsnag', Reporter: BugsnagReporter, config: 'LANDO_METRICS_BUGSNAG'},
+];
 
 debug('loaded plugins %o', plugins);
-
 
 exports.handler = async event => {
   // Error on anything but post requests
