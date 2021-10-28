@@ -1,5 +1,33 @@
 [build]
   functions = "functions"
+
+# Domain redirects
+[[redirects]]
+  from = "https://stats-v2.kalabox.io/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+[[redirects]]
+  from = "https://stats.lando.dev/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+[[redirects]]
+  from = "https://metrics.lndo.io/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+[[redirects]]
+  from = "https://stats.lndo.io/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+[[redirects]]
+  from = "https://metrics.devwithlando.io/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+[[redirects]]
+  from = "https://stats.devwithlando.io/*"
+  to = "https://metrics.lando.dev/:splat"
+  status = 301
+
+# API redirects
 [[redirects]]
   from = "/"
   to = "/.netlify/functions/ping"
