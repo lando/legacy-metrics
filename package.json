@@ -6,7 +6,9 @@
   "repository": "github:lando/legacy-metrics",
   "bugs": "https://github.com/lando/argv/issues/new/choose/",
   "homepage": "https://github.com/lando/legacy-metrics",
-  "keywords": ["lando"],
+  "keywords": [
+    "lando"
+  ],
   "engines": {
     "node": ">=14.0.0"
   },
