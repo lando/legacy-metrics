@@ -2,7 +2,7 @@
   "name": "lando-metrics",
   "description": "Anonymous usage collection, logging, error reporting and other data things.",
   "license": "GPL-3.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/lando/metrics"
