@@ -12,22 +12,16 @@
     "url": "https://github.com/lando/metrics/issues"
   },
   "scripts": {
-    "lint": "eslint --quiet --no-ignore lib plugins",
-    "release": "bump --prompt --tag --all --push",
-    "dev:metrics": "./node_modules/nodemon/bin/nodemon.js ./server.js",
-    "test": "yarn lint"
+    "lint": "eslint .",
+    "release": "bump --prompt --tag --all --push"
   },
   "dependencies": {
     "@bugsnag/js": "^6.4.3",
-    "@octokit/rest": "^17.1.0",
     "bluebird": "^3",
-    "body-parser": "^1.14.2",
-    "compression": "^1.7.4",
+    "debug": "^4.3.2",
     "dotenv": "^4.0.0",
     "elasticsearch": "~10.1.2",
-    "express": "^4.13.3",
-    "platformsh": "^1.0.0",
-    "winston": "^2"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^6.1.0",

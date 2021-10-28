@@ -9,7 +9,7 @@ proxy:
 services:
   metrics:
     type: node:14
-    command: yarn run dev:metrics
+    command: yarn run dev
     port: 8100
     ssl: true
     sslExpose: false

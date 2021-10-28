@@ -145,7 +145,7 @@ module.exports = (api, handler, {config, slack}) => {
               'f63decb94d': false,
               '20270ed04e': false,
               '8a2f0956f5': false,
-            }
+            },
           );
         }
       })

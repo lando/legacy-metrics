@@ -1,7 +1,7 @@
-Lando Metrics Server
-====================
+Legacy Lando Metrics Server
+===========================
 
-Lightweight node server that powers Lando metrics.
+Lightweight node server that powers Lando v1 metrics. **NOTE: Eventually this will be phased out in favor of something else.**
 
 Local Development
 -----------------
