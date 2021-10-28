@@ -42,7 +42,7 @@ debug('starting function with config %o', config);
 
 // Iterate through plugins and build list of reporters
 const plugins = _(config.LANDO_METRICS_PLUGINS)
-  .map(plugin => _.merge({}, plugin, {path: path.resolve(__dirname, '..', 'plugins', `${plugin.name}.js`)}))
+  .map(plugin => _.merge({}, plugin, {path: path.resolve(__dirname, `${plugin.name}.js`)}))
   .filter(plugin => fs.existsSync(plugin.path))
   .map(plugin => _.merge({}, plugin, {Reporter: require(plugin.path)}))
   .value();
