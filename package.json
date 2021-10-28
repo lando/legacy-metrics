@@ -1,15 +1,14 @@
 {
-  "name": "lando-metrics",
-  "description": "Anonymous usage collection, logging, error reporting and other data things.",
+  "name": "@lando/legacy-metrics",
+  "description": "DEPRECATED: Anonymous usage collection, logging, error reporting and other data things.",
   "license": "GPL-3.0",
-  "version": "1.0.1",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lando/metrics"
-  },
-  "bugs": {
-    "email": "mike@lando.dev",
-    "url": "https://github.com/lando/metrics/issues"
+  "version": "1.0.0",
+  "repository": "github:lando/legacy-metrics",
+  "bugs": "https://github.com/lando/argv/issues/new/choose/",
+  "homepage": "https://github.com/lando/legacy-metrics",
+  "keywords": ["lando"],
+  "engines": {
+    "node": ">=14.0.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -26,7 +25,6 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-google": "^0.9.1",
-    "nodemon": "^1.11.0",
     "version-bump-prompt": "^4.2.1"
   }
 }
