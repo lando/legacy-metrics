@@ -34,10 +34,16 @@ jobs:
 
       # Deploy
       - name: Publish to Netlify
-        uses: netlify/actions/cli@master
+        uses: nwtgck/actions-netlify@v1.2
         with:
-          args: deploy --functions=functions --prod --open
+          deploy-message: "Deploy ${{ github.ref }} from GitHub Actions"
+          functions-dir: './functions'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-config-path: './netlify.toml'
+          production-branch: main
+          production-deploy: true
+          publish-dir: './'
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 5
