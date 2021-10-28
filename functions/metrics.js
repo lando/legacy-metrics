@@ -77,5 +77,15 @@ exports.handler = async event => {
       .then(() => reporter.report(data))
       .then(() => debug('reported to %s', plugin.name))
       .then(() => reporter.close());
+  })
+  // Return success
+  .then(() => ({statusCode: 200, body: JSON.stringify({status: 'OK'})}))
+  // Throw error
+  .catch(error => {
+    debug('errored with %o', error);
+    return {
+      statusCode: 400,
+      body: JSON.stringify(error),
+    };
   });
 };
