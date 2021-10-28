@@ -2,8 +2,8 @@ name: Publish to Netlify
 
 on:
   push:
-    tags:
-      - v*
+    # tags:
+    #   - v*
 
 jobs:
   deploy:
@@ -34,8 +34,10 @@ jobs:
 
       # Deploy
       - name: Publish to Netlify
-        uses: netlify/actions/build@master
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --functions=functions --prod --open
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
