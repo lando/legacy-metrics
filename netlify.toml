@@ -44,3 +44,6 @@
   from = "/metrics/v2/*"
   to = "/.netlify/functions/metrics/:splat"
   status = 200
+
+[[plugins]]
+  package = "/hooks"
