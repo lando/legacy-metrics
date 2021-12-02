@@ -4,33 +4,33 @@
   # [context.production]
   #   ignore = "if git diff $CACHED_COMMIT_REF $COMMIT_REF ./package.json | grep - | grep version && git diff $CACHED_COMMIT_REF $COMMIT_REF ./package.json | grep + | grep version; then exit 1; else exit 0; fi"
 
-# Domain redirects
+# Domain rewrites
 [[redirects]]
   from = "https://stats-v2.kalabox.io/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 [[redirects]]
   from = "https://stats.lando.dev/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 [[redirects]]
   from = "https://metrics.lndo.io/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 [[redirects]]
   from = "https://stats.lndo.io/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 [[redirects]]
   from = "https://metrics.devwithlando.io/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 [[redirects]]
   from = "https://stats.devwithlando.io/*"
   to = "https://metrics.lando.dev/:splat"
-  status = 301
+  status = 200
 
-# API redirects
+# API rewrites
 [[redirects]]
   from = "/"
   to = "/.netlify/functions/ping"
