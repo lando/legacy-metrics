@@ -59,7 +59,7 @@ exports.handler = async event => {
   if (!id) return {statusCode: 500, body: 'ID is required!'};
 
   // Error on anything but post requests
-  if (event.httpMethod !== 'POST') {
+  if (_.lowerCase(event.httpMethod) !== 'post') {
     debug('unsupported method %s from %s', event.httpMethod, id);
     return {
       statusCode: 405,
