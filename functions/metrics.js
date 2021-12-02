@@ -51,20 +51,21 @@ const plugins = [
 debug('loaded plugins %o', plugins);
 
 exports.handler = async event => {
-  // Error on anything but post requests
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 500,
-      body: 'unrecognized HTTP Method, only POST accepted',
-    };
-  }
-
   // Get incoming data
   const pathParts = event.path.split('/');
   const id = (_.last(pathParts) === 'v2') ? undefined : _.last(pathParts);
 
   // Error if no id
   if (!id) return {statusCode: 500, body: 'ID is required!'};
+
+  // Error on anything but post requests
+  if (event.httpMethod !== 'POST') {
+    debug('unsupported method %s from %s', event.httpMethod, id);
+    return {
+      statusCode: 405,
+      body: 'Unsupported HTTP Method',
+    };
+  }
 
   // Merge data
   const data = _.merge({}, JSON.parse(event.body), {id});
