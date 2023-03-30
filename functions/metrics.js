@@ -7,12 +7,14 @@ const Promise = require('bluebird');
 // Load plugins
 const BugsnagReporter = require('./../plugins/bugsnag.js');
 const ElasticsearchReporter = require('./../plugins/elastic.js');
+const AmplitudeReporter = require('./../plugins/amplitude.js');
 
 // Define default config
 const config = {
   'LANDO_METRICS_PLUGINS': [
     {name: 'elastic', config: 'LANDO_METRICS_ELASTIC'},
     {name: 'bugsnag', config: 'LANDO_METRICS_BUGSNAG'},
+    {name: 'amplitude', config: 'LANDO_METRICS_AMPLITUDE'},
   ],
 };
 
@@ -46,6 +48,7 @@ debug('starting function with config %o', config);
 const plugins = [
   {name: 'elastic', Reporter: ElasticsearchReporter, config: 'LANDO_METRICS_ELASTIC'},
   {name: 'bugsnag', Reporter: BugsnagReporter, config: 'LANDO_METRICS_BUGSNAG'},
+  {name: 'amplitude', Reporter: AmplitudeReporter, config: 'LANDO_METRICS_AMPLITUDE'},
 ];
 
 debug('loaded plugins %o', plugins);

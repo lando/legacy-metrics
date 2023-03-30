@@ -6,6 +6,7 @@
   "repository": "github:lando/legacy-metrics",
   "bugs": "https://github.com/lando/argv/issues/new/choose/",
   "homepage": "https://github.com/lando/legacy-metrics",
+  "type": "module",
   "keywords": [
     "lando"
   ],
@@ -17,6 +18,7 @@
     "release": "bump --prompt --tag --all --push"
   },
   "dependencies": {
+    "@amplitude/analytics-node": "^1.1.0",
     "@bugsnag/js": "^6.4.3",
     "@octokit/core": "^3.5.1",
     "bluebird": "^3",
