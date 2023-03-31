@@ -16,8 +16,15 @@ export default class AmplitudeReporter {
   };
 
   report(data) {
-    data.device_id = data.instance;
-    track(data.action, data);
+    const userProperties = {
+      device_id: data.instance,
+      event_type: data.action,
+      os_name: data.os.platform,
+      os_version: data.os.release,
+      platform: data.mode,
+      app_version: data.version,
+    };
+    track(data.action, data, userProperties);
   };
 
   close() {
