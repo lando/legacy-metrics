@@ -1,5 +1,6 @@
-const _ = require('lodash');
-const debug = require('debug')('@lando/metrics');
+import DebugModule from 'debug';
+const debug = new DebugModule('@lando/metrics');
+import _ from 'lodash';
 
 exports.handler = async event => {
   const pathParts = event.path.split('/');

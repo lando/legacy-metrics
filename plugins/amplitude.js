@@ -1,8 +1,8 @@
 'use strict';
 import {init, track} from '@amplitude/analytics-node';
-const Promise = require('bluebird');
+import * as Promise from 'bluebird';
 
-class Amplitude {
+export default class AmplitudeReporter {
   constructor({apiKey}) {
     this.apiKey = apiKey;
     init(apiKey);
@@ -24,7 +24,3 @@ class Amplitude {
   };
 }
 
-/*
- * Return the class
- */
-module.exports = Amplitude;

@@ -1,13 +1,15 @@
 'use strict';
 
-const _ = require('lodash');
-const debug = require('debug')('@lando/metrics');
-const Promise = require('bluebird');
+import _ from 'lodash';
+// https://github.com/debug-js/debug/issues/786#issuecomment-845927683
+import DebugModule from 'debug';
+const debug = new DebugModule('@lando/metrics');
+import * as Promise from 'bluebird';
 
 // Load plugins
-const BugsnagReporter = require('./../plugins/bugsnag.js');
-const ElasticsearchReporter = require('./../plugins/elastic.js');
-const AmplitudeReporter = require('./../plugins/amplitude.js');
+import * as BugsnagReporter from './../plugins/bugsnag.js';
+import * as ElasticsearchReporter from './../plugins/elastic.js';
+import AmplitudeReporter from '../plugins/amplitude.js';
 
 // Define default config
 const config = {
@@ -27,7 +29,8 @@ _.forEach(_.map(pluginConfig, plugin => plugin.config), key => {
 });
 
 // Merge in .env file
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Merge in process.env as relevant
 _.forEach(_.keys(config), key => {

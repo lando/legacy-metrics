@@ -1,4 +1,5 @@
-const debug = require('debug')('@lando/metrics');
+import DebugModule from 'debug';
+const debug = new DebugModule('@lando/metrics');
 
 exports.handler = async () => {
   debug('ping pong');
