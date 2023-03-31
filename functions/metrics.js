@@ -50,7 +50,7 @@ const plugins = [
 
 debug('loaded plugins %o', plugins);
 
-exports.handler = async event => {
+const handler = async event => {
   // Get incoming data
   const pathParts = event.path.split('/');
   const id = (_.last(pathParts) === 'v2') ? undefined : _.last(pathParts);
@@ -90,3 +90,5 @@ exports.handler = async event => {
     };
   });
 };
+
+export {handler};

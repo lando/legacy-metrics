@@ -1,10 +1,12 @@
 import DebugModule from 'debug';
 const debug = new DebugModule('@lando/metrics');
 
-exports.handler = async () => {
+const handler = async () => {
   debug('ping pong');
   return {
     statusCode: 200,
     body: JSON.stringify({ping: 'pong'}),
   };
 };
+
+export {handler};

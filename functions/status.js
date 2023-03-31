@@ -2,7 +2,7 @@ import DebugModule from 'debug';
 const debug = new DebugModule('@lando/metrics');
 import _ from 'lodash';
 
-exports.handler = async event => {
+const handler = async event => {
   const pathParts = event.path.split('/');
   const status = (_.last(pathParts) === 'status') ? 'ok' : _.last(pathParts);
   debug('status is %s', status);
@@ -11,3 +11,5 @@ exports.handler = async event => {
     body: JSON.stringify({status}),
   };
 };
+
+export {handler};
