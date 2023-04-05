@@ -1,8 +1,6 @@
 'use strict';
 import {init, track} from '@amplitude/analytics-node';
 import * as Promise from 'bluebird';
-import DebugModule from 'debug';
-const debug = new DebugModule('@lando/metrics');
 
 export default class AmplitudeReporter {
   constructor({apiKey}) {
@@ -17,7 +15,7 @@ export default class AmplitudeReporter {
     return Promise.resolve(true);
   };
 
-  async report(data) {
+  report(data) {
     const userProperties = {
       device_id: data.instance,
       event_type: data.action,
@@ -26,10 +24,7 @@ export default class AmplitudeReporter {
       platform: data.mode,
       app_version: data.version,
     };
-    const result = await track(data.action, data, userProperties).promise;
-    debug('amplitude request status is %s', result.code);
-    debug('amplitude request event is %s', result.event);
-    debug('amplitude request is %s', result);
+    track(data.action, data, userProperties);
   };
 
   close() {
