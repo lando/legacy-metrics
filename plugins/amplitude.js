@@ -5,7 +5,7 @@ import * as Promise from 'bluebird';
 export default class AmplitudeReporter {
   constructor({apiKey}) {
     this.apiKey = apiKey;
-    init(apiKey);
+    init(apiKey, {flushQueueSize: 1, flushIntervalMillis: 100});
   };
 
   /*
