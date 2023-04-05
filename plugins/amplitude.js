@@ -24,7 +24,9 @@ export default class AmplitudeReporter {
       platform: data.mode,
       app_version: data.version,
     };
-    return track(data.action, data, userProperties);
+    return Promise.try(() => {
+      return track(data.action, data, userProperties).promise;
+    });
   };
 
   close() {
