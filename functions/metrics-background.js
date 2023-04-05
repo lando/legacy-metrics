@@ -71,9 +71,8 @@ const handler = event => {
   const reporter = new AmplitudeReporter(config['LANDO_METRICS_AMPLITUDE']);
 
   return reporter.ping()
-    .then(() => {
-      reporter.report(data).then(result => debug('reported to amplitude %s', result));
-    })
+    .then(() => reporter.report(data))
+    .then(result => debug('reported to amplitude %s', result))
     .then(() => reporter.close())
     .then(() => debug('connnection closed'))
     .then(() => ({statusCode: 200, body: JSON.stringify({status: 'OK'})}))
