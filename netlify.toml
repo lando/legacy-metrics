@@ -10,27 +10,31 @@
 # Domain rewrites
 [[redirects]]
   from = "https://stats-v2.kalabox.io/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 [[redirects]]
   from = "https://stats.lando.dev/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 [[redirects]]
   from = "https://metrics.lndo.io/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 [[redirects]]
   from = "https://stats.lndo.io/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 [[redirects]]
   from = "https://metrics.devwithlando.io/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 [[redirects]]
   from = "https://stats.devwithlando.io/*"
-  to = "https://metrics.lando.dev/:splat"
+  to = "https://telemetry.lando.dev/:splat"
+  status = 200
+[[redirects]]
+  from = "https://metrics.lando.dev/*"
+  to = "https://telemetry.lando.dev/:splat"
   status = 200
 
 # API rewrites
