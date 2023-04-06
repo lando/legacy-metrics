@@ -4,6 +4,8 @@ import _ from 'lodash';
 // https://github.com/debug-js/debug/issues/786#issuecomment-845927683
 import DebugModule from 'debug';
 const debug = new DebugModule('@lando/metrics');
+import * as Promise from 'bluebird';
+
 // Load plugins
 import AmplitudeReporter from '../plugins/amplitude.js';
 
@@ -48,7 +50,7 @@ const plugins = [
 
 debug('loaded plugins %o', plugins);
 
-const handler = event => {
+const handler = async event => {
   // Get incoming data
   const pathParts = event.path.split('/');
   const id = (_.last(pathParts) === 'v2') ? undefined : _.last(pathParts);
@@ -68,22 +70,25 @@ const handler = event => {
   // Merge data
   const data = _.merge({}, JSON.parse(event.body), {id});
   debug('request recieved from %s with value %o', data.id, data);
-  const reporter = new AmplitudeReporter(config['LANDO_METRICS_AMPLITUDE']);
 
-  return reporter.ping()
-    .then(() => reporter.report(data))
-    .then(result => debug('reported to amplitude %s', result))
-    .then(() => reporter.close())
-    .then(() => debug('connnection closed'))
-    .then(() => ({statusCode: 200, body: JSON.stringify({status: 'OK'})}))
-    // Throw error
-    .catch(error => {
-      debug('errored with %o', error);
-      return {
-        statusCode: 400,
-        body: JSON.stringify(error),
-      };
-    });
+  // Report data
+  return Promise.map(plugins, plugin => {
+    const reporter = new plugin.Reporter(config[plugin.config]);
+    return reporter.ping()
+      .then(() => reporter.report(data))
+      .then(() => debug('reported to %s', plugin.name))
+      .then(() => reporter.close());
+  })
+  // Return success
+  .then(() => ({statusCode: 200, body: JSON.stringify({status: 'OK'})}))
+  // Throw error
+  .catch(error => {
+    debug('errored with %o', error);
+    return {
+      statusCode: 400,
+      body: JSON.stringify(error),
+    };
+  });
 };
 
 export {handler};
