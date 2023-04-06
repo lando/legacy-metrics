@@ -1,6 +1,5 @@
 'use strict';
 import {init, track} from '@amplitude/analytics-node';
-import * as Promise from 'bluebird';
 
 export default class AmplitudeReporter {
   constructor({apiKey}) {
@@ -24,7 +23,7 @@ export default class AmplitudeReporter {
       platform: data.mode,
       app_version: data.version,
     };
-    return Promise.try(() => {
+    return Promise.resolve().then(() => {
       return track(data.action, data, userProperties).promise;
     });
   };

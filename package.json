@@ -21,7 +21,6 @@
     "@amplitude/analytics-node": "^1.1.0",
     "@bugsnag/js": "^6.4.3",
     "@octokit/core": "^3.5.1",
-    "bluebird": "^3",
     "debug": "^4.3.2",
     "dotenv": "^4.0.0",
     "elasticsearch": "~10.1.2",
