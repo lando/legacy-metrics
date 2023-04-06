@@ -53,7 +53,7 @@ debug('loaded plugins %o', plugins);
 const handler = async event => {
   // Get incoming data
   const pathParts = event.path.split('/');
-  const id = (_.last(pathParts) === 'v2') ? undefined : _.last(pathParts);
+  const id = (_.last(pathParts) === 'v1') ? undefined : _.last(pathParts);
 
   // Error if no id
   if (!id) return {statusCode: 500, body: 'ID is required!'};
