@@ -17,10 +17,11 @@ export default class AmplitudeReporter {
   report(data) {
     const userProperties = {
       device_id: data.instance,
+      user_id: data.instance,
       event_type: data.action,
       os_name: data.os.platform,
       os_version: data.os.release,
-      platform: data.mode,
+      platform: `${data.product}-${data.context}-${data.mode}`,
       app_version: data.version,
     };
     return Promise.resolve().then(() => {
