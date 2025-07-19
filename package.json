@@ -1,7 +1,7 @@
 {
   "name": "@lando/legacy-metrics",
   "description": "DEPRECATED: Anonymous usage collection, logging, error reporting and other data things.",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "version": "1.1.0",
   "repository": "github:lando/legacy-metrics",
   "bugs": "https://github.com/lando/argv/issues/new/choose/",
