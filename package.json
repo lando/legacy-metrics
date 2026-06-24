@@ -24,7 +24,7 @@
     "debug": "^4.3.2",
     "dotenv": "^4.0.0",
     "elasticsearch": "~10.1.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.18.1"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
